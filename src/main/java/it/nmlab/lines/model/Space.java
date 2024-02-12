@@ -1,14 +1,15 @@
 package it.nmlab.lines.model;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import it.nmlab.lines.exception.LinesException;
 
 public class Space {
 
-	private HashSet<Point> points = new HashSet<Point>();
+	private SortedSet<Point> points = new TreeSet<>();
 	
 	public Space() {
 		
@@ -25,7 +26,15 @@ public class Space {
 	}
 	
 	public List<Line> lines(int points) {
-		return List.of();
+		if ( points == 0) {
+			return List.of();
+		}
+		else if ( points == 1 ) {
+			throw new LinesException("Infinite lines");
+		}
+		else {
+			return List.of();
+		}
 	}
 	
 	public void delete() {
