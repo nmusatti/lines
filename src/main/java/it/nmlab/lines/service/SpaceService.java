@@ -15,11 +15,15 @@ public class SpaceService {
 		this.space = space;
 	}
 
-	public Set<Point> get() {
+	public void add(Point p) {
+		space.add(p);
+	}
+
+	public Set<Point> getPoints() {
 		return space.get();
 	}
 	
-	public List<Line> lines(int points) {
+	public List<Line> getLines(int points) {
 		return space.lines(points);
 	}
 	
