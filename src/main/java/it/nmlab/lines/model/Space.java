@@ -25,15 +25,15 @@ public class Space {
 		return points;
 	}
 	
-	public List<Line> lines(int points) {
-		if ( points == 0) {
+	public List<Line> lines(int length) {
+		if ( length == 0) {
 			return List.of();
 		}
-		else if ( points == 1 ) {
+		else if ( length == 1 ) {
 			throw new LinesException("Infinite lines");
 		}
 		else {
-			return List.of();
+			return new Engine(points).findLines(length);
 		}
 	}
 	

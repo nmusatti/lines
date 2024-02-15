@@ -1,17 +1,32 @@
 package it.nmlab.lines.model;
 
-import java.util.HashSet;
+import java.util.Collection;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import it.nmlab.lines.exception.LinesException;
 
 public class Line {
 
-	private final HashSet<Point> points;
+	private SortedSet<Point> points = new TreeSet<>();
 	
-	public Line(HashSet<Point> points) {
-		this.points = points;
+	public Line() {
 	}
 
-	public HashSet<Point> getPoints() {
+	public Line(Point...points) {
+		for ( Point p : points ) {
+			addPoint(p);
+		}
+	}
+	
+	public Collection<Point> getPoints() {
 		return points;
 	}
 	
+	public void addPoint(Point p) {
+		if ( points.contains(p) ) {
+			throw new LinesException("Point already present");
+		}
+		points.add(p);
+	}
 }
