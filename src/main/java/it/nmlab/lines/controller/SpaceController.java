@@ -1,6 +1,5 @@
 package it.nmlab.lines.controller;
 
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.nmlab.lines.model.Line;
 import it.nmlab.lines.model.Point;
 import it.nmlab.lines.service.SpaceService;
 
@@ -37,7 +35,7 @@ public class SpaceController {
 	}
 
 	@GetMapping("/lines/{points}")
-	List<Line> getLines(@PathVariable Integer points) {
+	Set<Set<Point>> getLines(@PathVariable Integer points) {
 		return service.getLines(points);
 	}
 	

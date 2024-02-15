@@ -1,9 +1,11 @@
 package it.nmlab.lines.model;
 
-import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
+
+import com.google.common.collect.Sets;
 
 import it.nmlab.lines.exception.LinesException;
 
@@ -25,15 +27,13 @@ public class Space {
 		return points;
 	}
 	
-	public List<Line> lines(int length) {
-		if ( length == 0) {
-			return List.of();
-		}
-		else if ( length == 1 ) {
-			throw new LinesException("Infinite lines");
+	public Set<Set<Point>> lines(int length) {
+		Set<Set<Point>> ps = Sets.powerSet(points);
+		if ( length == 0 ) {
+			return ps;
 		}
 		else {
-			return new Engine(points).findLines(length);
+			return ps.stream().filter(s -> s.size() >= length).collect(Collectors.toSet());
 		}
 	}
 	
