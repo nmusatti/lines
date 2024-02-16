@@ -2,6 +2,9 @@ package it.nmlab.lines.model;
 
 import java.util.Objects;
 
+/**
+ * Point implements Comparable to support lexicographic ordering.
+ */
 public class Point implements Comparable<Point> {
 
 	private final double x;

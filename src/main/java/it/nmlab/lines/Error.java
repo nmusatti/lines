@@ -1,5 +1,8 @@
 package it.nmlab.lines;
 
+/**
+ * A simple error message response
+ */
 public class Error {
 
 	private String message;

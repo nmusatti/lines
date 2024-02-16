@@ -10,6 +10,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import it.nmlab.lines.exception.LinesException;
 
+/**
+ * Intercept known exceptions to provide error messages in a conventional format
+ */
 @ControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class ErrorResolver extends ResponseEntityExceptionHandler {
@@ -17,6 +20,7 @@ public class ErrorResolver extends ResponseEntityExceptionHandler {
 	public ErrorResolver() {
 	}
 
+	// Currently the only known exception type is LineException
     @ExceptionHandler({LinesException.class})
     public ResponseEntity<Error> handleLineException(LinesException ex) {
     	return new ResponseEntity<Error>(new Error(ex.getMessage()), HttpStatus.BAD_REQUEST);

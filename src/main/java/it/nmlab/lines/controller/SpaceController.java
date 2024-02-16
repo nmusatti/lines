@@ -1,6 +1,6 @@
 package it.nmlab.lines.controller;
 
-import java.util.Set;
+import java.util.Collection;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 import it.nmlab.lines.model.Point;
 import it.nmlab.lines.service.SpaceService;
 
+/**
+ * A controller to handle all the endpoints. In a larger project I'd probably handle each endpoint
+ * with a different class but given that the domain model is a single class it would be overkill
+ * here.
+ */
 @RestController
 @RequestMapping("/")
-//@Api(tags = { "address" })
 public class SpaceController {
 
 	private SpaceService service;
@@ -30,12 +34,12 @@ public class SpaceController {
 	}
 
 	@GetMapping("/space")
-	public Set<Point> getPoints() {
+	public Collection<Point> getPoints() {
 		return service.getPoints();
 	}
 
 	@GetMapping("/lines/{points}")
-	Set<Set<Point>> getLines(@PathVariable Integer points) {
+	Collection<Collection<Point>> getLines(@PathVariable Integer points) {
 		return service.getLines(points);
 	}
 	

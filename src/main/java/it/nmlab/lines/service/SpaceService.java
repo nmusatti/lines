@@ -1,10 +1,13 @@
 package it.nmlab.lines.service;
 
-import java.util.Set;
+import java.util.Collection;
 
 import it.nmlab.lines.model.Point;
 import it.nmlab.lines.model.Space;
 
+/**
+ * The service class just delegates to the Space class.
+ */
 public class SpaceService {
 
 	private Space space;
@@ -17,11 +20,11 @@ public class SpaceService {
 		space.add(p);
 	}
 
-	public Set<Point> getPoints() {
+	public Collection<Point> getPoints() {
 		return space.get();
 	}
 	
-	public Set<Set<Point>> getLines(int points) {
+	public Collection<Collection<Point>> getLines(int points) {
 		return space.lines(points);
 	}
 	
